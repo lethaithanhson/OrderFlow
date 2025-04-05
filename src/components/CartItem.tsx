@@ -31,11 +31,15 @@ const CartItem: React.FC<CartItemProps> = (props) => {
       return 0;
     }
     if (promoCodeSelectedObject.type === "fixed") {
-      const discounted = Math.max(0, price * quantity - promoCodeSelectedObject.value);
+      const discounted = Math.max(
+        0,
+        price * quantity - promoCodeSelectedObject.value
+      );
       form.setFieldValue(["cart", name, "discountedPrice"], discounted);
       return discounted;
     } else {
-      const discounted = price * quantity * (1 - promoCodeSelectedObject.value / 100);
+      const discounted =
+        price * quantity * (1 - promoCodeSelectedObject.value / 100);
       form.setFieldValue(["cart", name, "discountedPrice"], discounted);
       return discounted;
     }
@@ -49,7 +53,7 @@ const CartItem: React.FC<CartItemProps> = (props) => {
     const discounted = getDiscountedPrice();
     return price * quantity - discounted;
   }, [price, quantity, getDiscountedPrice]);
-  
+
   return (
     <div className="flex flex-col items-star gap-2">
       <div className="flex-1">
@@ -59,6 +63,7 @@ const CartItem: React.FC<CartItemProps> = (props) => {
         {/* Đơn giá */}
         <Item
           name={[name, "price"]}
+          className="!mb-0"
           label={<span className="text-xs">Đơn giá</span>}
         >
           <InputNumber
@@ -70,6 +75,7 @@ const CartItem: React.FC<CartItemProps> = (props) => {
         </Item>
         {/* Số lượng */}
         <Item
+          className="!mb-0"
           name={[name, "quantity"]}
           label={<span className="text-xs">Số lượng</span>}
         >
@@ -81,6 +87,7 @@ const CartItem: React.FC<CartItemProps> = (props) => {
         </Item>
         {/* Thành tiền */}
         <Item
+          className="!mb-0"
           name={[name, "discountedPrice"]}
           label={<span className="text-xs">Thành tiền</span>}
         >

@@ -176,7 +176,10 @@ const CreateOrder = () => {
                             ? "border-blue-500 bg-blue-50"
                             : "border-gray-200"
                         }`}
-                        onClick={() => handlePaymentMethodChange(PaymentMethod.CARD)}
+                        onClick={() => {
+                          handlePaymentMethodChange(PaymentMethod.CARD)
+                          handleResetCashAmount()
+                        }}
                       >
                         <Radio onChange={handleResetCashAmount} value="card">
                           <div className="flex gap-2 ml-3 items-center">
